@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, ShoeList, ShoeDetail, WornDetail, WornListCreate, ShoelaceList, ShoelaceDetail, AddShoelaceToShoe, RemoveShoelaceFromShoe
+from .views import Home, ShoeList, ShoeDetail, WornDetail, WornListCreate, ShoelaceList, ShoelaceDetail, AddShoelaceToShoe, RemoveShoelaceFromShoe, CreateUserView, LoginView, VerifyUserView
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
@@ -10,5 +10,8 @@ urlpatterns = [
     path('shoelaces/', ShoelaceList.as_view(), name='shoelace-list'),
     path('shoelaces/<int:id>/', ShoelaceDetail.as_view(), name='shoelace-detail'),
     path('shoes/<int:shoe_id>/add_shoelaces/<int:shoelace_id>/', AddShoelaceToShoe.as_view(), name='add-shoelace-to-shoe'),
-    path('shoes/<int:shoe_id>/remove_shoelaces/<int:shoelace_id>/', RemoveShoelaceFromShoe.as_view(), name='remove-shoelace-from-shoe')
+    path('shoes/<int:shoe_id>/remove_shoelaces/<int:shoelace_id>/', RemoveShoelaceFromShoe.as_view(), name='remove-shoelace-from-shoe'),
+    path('users/register/', CreateUserView.as_view(), name='register'),
+    path('users/login/', LoginView.as_view(), name='login'),
+    path('users/token/refresh/', VerifyUserView.as_view(), name='token-refresh')
 ]
